@@ -15,8 +15,8 @@ public class LonelyTwitterActivity extends Activity {
 	private EditText bodyText;
 	private ListView oldTweetsList;
 
-	private List<NormalLonelyTweet> tweets;
-	private ArrayAdapter<NormalLonelyTweet> adapter;
+	private List<LonelyTweet> tweets;
+	private ArrayAdapter<LonelyTweet> adapter;
 	private TweetsFileManager tweetsProvider;
 
 	@Override
@@ -34,7 +34,7 @@ public class LonelyTwitterActivity extends Activity {
 
 		tweetsProvider = new TweetsFileManager(this);
 		tweets = tweetsProvider.loadTweets();
-		adapter = new ArrayAdapter<NormalLonelyTweet>(this, R.layout.list_item,
+		adapter = new ArrayAdapter<LonelyTweet>(this, R.layout.list_item,
 				tweets);
 		oldTweetsList.setAdapter(adapter);
 	}
@@ -42,9 +42,9 @@ public class LonelyTwitterActivity extends Activity {
 	public void save(View v) {
 		String text = bodyText.getText().toString();
 
-		NormalLonelyTweet tweet;
+		LonelyTweet tweet;
 
-		tweet = new NormalLonelyTweet(text);
+		tweet = new LonelyTweet(text);
 
 		//TODO: use different sub-classes (Normal or Important) based on usage of "*" in the text.
 		
